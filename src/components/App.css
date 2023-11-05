@@ -1,0 +1,108 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 10vmax;
+  margin-top: -20px;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.App-input {
+  background-color: #202225; /* Discord input background color */
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+  margin: 5px 0; /* This will ensure there is space between the two input fields */
+  color: #dcddde; /* Discord input text color */
+  font-size: 16px; /* Appropriate font size for inputs */
+  width: 100%; /* Take up 100% of the container's width */
+  box-sizing: border-box; /* Include padding in the width */
+}
+
+/* Placeholder color */
+.App-input::placeholder {
+  color: #72767d; /* Discord placeholder text color */
+}
+
+/* Remove the input field outline on focus and add Discord-like focus outline */
+.App-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #00b0f4; /* Discord-like focus outline */
+}
+
+/* Style adjustments for the container */
+.input-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px; /* Maximum width of the input fields */
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 10vmax;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-input {
+  margin: 10px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  width: 250px;
+}
+
+.App-login-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  background-color: #5865F2;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.App-login-button:hover {
+  background-color: #4752C4;
+}
+
+/* Добавьте любые другие глобальные стили, которые у вас есть */

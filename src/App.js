@@ -1,20 +1,28 @@
-
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import Login from './components/Login';
+import Register from './components/register';
+import Protected from './components/pages/protected'; // Путь к защищенному компоненту
+import ProtectedRoute from './components/pages/protectedRoute'; // Путь к компоненту защищенного маршрута
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={"https://www.svgrepo.com/show/395898/blue-book.svg"} className="App-logo" alt="logo" />
-        <p>
-          BlueBook
-        </p>
-        <p>
-        <textarea className="App-textarea"></textarea> {/* Textarea добавлен сюда */}
-        <textarea className="App-textarea"></textarea> {/* Textarea добавлен сюда */}
-        </p>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route 
+          path="/protected" 
+          element={
+            <ProtectedRoute>
+              <Protected />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/" element={<Navigate replace to="/login" />} />
+      </Routes>
+    </Router>
   );
 }
 
