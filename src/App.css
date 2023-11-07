@@ -98,3 +98,9 @@ label {
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
+.protected-h1 {
+  padding:1px;
+  width: calc(100% - 1px); /* Ширина кнопки с учетом padding */
+  
+}

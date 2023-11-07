@@ -20,7 +20,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="/" element={<Navigate replace to="/login" />} />
+        <Route path="/" element={<Navigate replace to="/protected" />} />
       </Routes>
     </Router>
   );

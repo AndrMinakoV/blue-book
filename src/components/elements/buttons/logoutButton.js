@@ -13,7 +13,7 @@ function LogoutButton() {
   };
 
   return (
-    <button onClick={handleLogout}>Exit</button>
+    <button type="submit" className="App-login-button" onClick={handleLogout}>Exit</button>
   );
 }
 

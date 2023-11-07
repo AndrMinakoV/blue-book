@@ -2,47 +2,31 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './App.css';
-
-import { useNavigate } from 'react-router-dom'; // Используйте useNavigate для реализации навигации
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Хук для навигации
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
       const response = await axios.post('http://localhost:4000/login', {
-        email,
+        username,
         password,
       });
       console.log('Вход выполнен:', response.data);
       localStorage.setItem('token', response.data.token);
       navigate('/');
-// В блоке try/catch измените строки с вызовом alert
-
-} catch (error) {
-    if (error.response) {
-      // Ошибка от сервера, сервер вернул ответ со статусом ошибки
-      alert(`Ошибка входа: ${error.response.data}`);
-    } else if (error.request) {
-      // Запрос был сделан, но ответ не был получен
-      alert('Ошибка входа: Нет ответа от сервера');
-    } else {
-      // Что-то пошло не так при настройке запроса
-      alert(`Ошибка входа: ${error.message}`);
+    } catch (error) {
+      alert(`Ошибка входа: ${error.response ? error.response.data.message : 'Нет ответа от сервера'}`);
     }
-  }
-  
   };
-  
 
   const handleSubmit = (event) => {
     event.preventDefault();
     handleLogin();
   };
-
-  // ...ваш предыдущий импорт и начало функции...
 
   return (
     <div className='App'>
@@ -51,27 +35,25 @@ function Login() {
         <p>BlueBook</p>
         <form onSubmit={handleSubmit} className="form-container">
           <div className="input-container">
-            <label htmlFor="email"></label>
             <input
+              id="username"
+              type='text'
               className="App-input"
-              id="email"
-              type='email' // используйте type='text' для логина, если он не является электронной почтой
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               required
-              placeholder="Nickname" // Плейсхолдер в поле ввода
+              placeholder="Username"
             />
           </div>
           <div className="input-container">
-            <label htmlFor="password"></label>
             <input
-              className="App-input"
               id="password"
               type="password"
+              className="App-input"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              placeholder="Password" // Плейсхолдер в поле ввода
+              placeholder="Password"
             />
           </div>
           <button type="submit" className="App-login-button">Log in</button>
@@ -79,9 +61,6 @@ function Login() {
       </header>
     </div>
   );
-  
-  // ...ваш экспорт компонента...
-  
 }
 
 export default Login;

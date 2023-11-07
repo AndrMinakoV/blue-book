@@ -1,24 +1,24 @@
+// Register.js
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Используем useNavigate
+import { useNavigate } from 'react-router-dom';
+import './App.css'; // Убедитесь, что стили подключены правильно
 
 function Register() {
   const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Заменяем useHistory на useNavigate
+  const navigate = useNavigate();
 
   const handleRegister = async () => {
     try {
       const response = await axios.post('http://localhost:4000/register', {
         username,
-        email,
         password,
       });
       console.log('Регистрация успешна:', response.data);
-      navigate('/login'); // Перенаправляем пользователя на страницу входа
+      navigate('/login');
     } catch (error) {
-      console.error('Ошибка регистрации:', error.response.data);
+      alert(`Ошибка регистрации: ${error.response ? error.response.data.message : error.message}`);
     }
   };
 
@@ -28,44 +28,36 @@ function Register() {
   };
 
   return (
-    <div>
-      <h2>Регистрация</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">
-          Имя пользователя:
-          <input
-            id="username"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </label>
-        <br />
-        <label htmlFor="email">
-          Электронная почта:
-          <input
-            id="email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <br />
-        <label htmlFor="password">
-          Пароль:
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <br />
-        <button type="submit">Зарегистрироваться</button>
-      </form>
+    <div className='App'>
+      <header className="App-header">
+        <img src={"https://www.svgrepo.com/show/395898/blue-book.svg"} className="App-logo" alt="logo" />
+        <p>BlueBook</p>
+        <form onSubmit={handleSubmit} className="form-container">
+          <div className="input-container">
+            <input
+              id="username"
+              type="text"
+              className="App-input"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              placeholder="Username"
+            />
+          </div>
+          <div className="input-container">
+            <input
+              id="password"
+              type="password"
+              className="App-input"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              placeholder="Password"
+            />
+          </div>
+          <button type="submit" className="App-login-button">Register</button>
+        </form>
+      </header>
     </div>
   );
 }
