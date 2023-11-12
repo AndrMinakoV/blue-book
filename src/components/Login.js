@@ -17,7 +17,7 @@ function Login() {
       });
       console.log('Вход выполнен:', response.data);
       localStorage.setItem('token', response.data.token);
-      navigate('/');
+      navigate('/home');
     } catch (error) {
       alert(`Ошибка входа: ${error.response ? error.response.data.message : 'Нет ответа от сервера'}`);
     }
