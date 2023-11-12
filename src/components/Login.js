@@ -11,7 +11,7 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://162.247.152.9:4000/login', {
+      const response = await axios.post('https://mtechlab.dev/api/login', {
         username,
         password,
       });

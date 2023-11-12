@@ -81,7 +81,7 @@ app.use(async (req, res, next) => {
 
 
 // Роут регистрации
-app.post('/register', async (req, res) => {
+app.post('/api/register', async (req, res) => {
   try {
     const { username, password } = req.body;
     const existingUser = await User.findOne({ username });
@@ -101,7 +101,7 @@ app.post('/register', async (req, res) => {
 });
 
 // Роут входа
-app.post('/login', async (req, res) => {
+app.post('/api/login', async (req, res) => {
   try {
     const { username, password } = req.body;
     const user = await User.findOne({ username });
