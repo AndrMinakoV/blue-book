@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Login from './components/Login';
 import Register from './components/register';
-import Protected from './components/pages/protected'; // Путь к защищенному компоненту
-import ProtectedRoute from './components/pages/protectedRoute'; // Путь к компоненту защищенного маршрута
+import Protected from './components/pages/protected';
+import ProtectedRoute from './components/pages/protectedRoute';
 import './App.css';
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="/" element={<Navigate replace to="/protected" />} />
+        <Route path="/" element={<Navigate replace to="/login" />} />
       </Routes>
     </Router>
   );
